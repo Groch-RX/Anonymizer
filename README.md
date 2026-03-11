@@ -64,11 +64,11 @@ Share this tool. Every new user makes everyone safer.
 
 ## Installation
 
-No dependencies beyond Python 3 stdlib. Works on Linux, Mac, Windows.
+No dependencies beyond Python 3 stdlib. Works on Linux, Mac, and Windows.
 
 ```bash
 git clone https://github.com/Groch-RX/Anonymizer
-cd anonymizer
+cd Anonymizer
 python3 anonymizer.py --help
 ```
 
@@ -76,25 +76,53 @@ python3 anonymizer.py --help
 
 ## Usage
 
+### Linux / Mac
+
 ```bash
-# basic — pipe text in
+# pipe text directly
 echo "your text here" | python3 anonymizer.py
 
 # from a file
-cat essay.txt | python3 anonymizer.py
-
-# specific regional profiles
-echo "text" | python3 anonymizer.py --profiles indian,arabic,russian
-
-# intensity control
-echo "text" | python3 anonymizer.py --intensity 0.3
-
-# list available profiles
-python3 anonymizer.py --list-profiles
+cat myfile.txt | python3 anonymizer.py
 
 # interactive mode
 python3 anonymizer.py
+# paste your text
+# press Ctrl+D when done
 ```
+
+### Windows (PowerShell)
+
+```powershell
+# direct text — easiest on Windows
+python3 anonymizer.py --text "your text here"
+
+# from a file
+Get-Content myfile.txt | python3 anonymizer.py
+
+# interactive mode
+python3 anonymizer.py
+# paste your text
+# press Ctrl+Z then Enter when done
+```
+
+### Options
+
+```bash
+# change intensity (default 0.3)
+python3 anonymizer.py --text "your text" --intensity 0.6
+
+# specific profiles only
+python3 anonymizer.py --text "your text" --profiles indian,arabic
+
+# list all profiles
+python3 anonymizer.py --list-profiles
+
+# reproducible output — same seed = same result every time
+python3 anonymizer.py --text "your text" --seed 42
+```
+
+---
 
 ## Intensity Guide
 
@@ -180,6 +208,8 @@ Pull requests welcome. All contributions must be released under AGPLv3.
 If you improve this tool, your improvements belong to everyone.
 That's the point.
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
 ---
 
 ## Disclaimer
@@ -207,7 +237,7 @@ redistribute it under the terms of the AGPLv3.
 
 ---
 
-*Privacy is not about having something to hide.*
+*Privacy is not about having something to hide.*  
 *Privacy is a fundamental human right.*
 
 **Share this tool. Every user makes everyone safer.**
