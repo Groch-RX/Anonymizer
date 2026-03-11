@@ -244,7 +244,7 @@ def apply_profile(text, profile_name, intensity):
             continue
 
         # add typo
-        word = add_typo(word, intensity * 0.4)
+        word = add_typo(word, intensity)
 
         result.append(word)
         i += 1
@@ -343,6 +343,10 @@ def main():
         help='Text to anonymize (or pipe via stdin)'
     )
     parser.add_argument(
+        '--text', dest='text_flag',
+        help='Text to anonymize directly e.g. --text "your text here"'
+    )
+    parser.add_argument(
         '--profiles', default='all',
         help='Comma separated profiles: chinese,french,dutch,indian,arabic,russian (default: all)'
     )
@@ -368,12 +372,16 @@ def main():
         return
 
     # get text from arg or stdin
-    if args.text:
+    if args.text_flag:
+        text = args.text_flag
+    elif args.text:
         text = args.text
     elif not sys.stdin.isatty():
         text = sys.stdin.read().strip()
     else:
-        print("anonymizer.py — paste your text below, then press Ctrl+D")
+        import platform
+        hint = "Ctrl+Z then Enter" if platform.system() == "Windows" else "Ctrl+D"
+        print(f"anonymizer.py — paste your text below, then press {hint}")
         text = sys.stdin.read().strip()
 
     if not text:
