@@ -67,7 +67,7 @@ Share this tool. Every new user makes everyone safer.
 No dependencies beyond Python 3 stdlib. Works on Linux, Mac, Windows.
 
 ```bash
-git clone https://github.com/[yourname]/anonymizer
+git clone https://github.com/Groch-RX/Anonymizer
 cd anonymizer
 python3 anonymizer.py --help
 ```
